@@ -37,6 +37,9 @@ dependencies:
   # Storage
   shared_preferences: ^2.2.0
 
+  # Image Picker
+  image_picker: ^1.1.2
+  
   # UI Components
   cached_network_image: ^3.3.0
   flutter_animate: ^4.3.0

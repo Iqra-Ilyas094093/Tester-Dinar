@@ -1,44 +1,68 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:dinar_app/core/theme/app_colors.dart';
+import 'package:dinar_app/core/widgets/loyalty rewards/lr_action_buttons.dart';
+import 'package:dinar_app/core/widgets/loyalty rewards/lr_points_card.dart';
+import 'package:dinar_app/core/widgets/loyalty rewards/lr_recent_points.dart';
+import 'package:dinar_app/core/widgets/loyalty rewards/lr_refer_card.dart';
 
-class LoyaltyRewardsscreen extends StatefulWidget {
+class LoyaltyRewardsscreen extends StatelessWidget {
   const LoyaltyRewardsscreen({super.key});
 
   @override
-  State<LoyaltyRewardsscreen> createState() => _LoyaltyRewardsscreenState();
-}
-
-class _LoyaltyRewardsscreenState extends State<LoyaltyRewardsscreen> {
-  @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final textColor = isDark ? Colors.white : AppColors.nearBlack;
+
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Loyalty Rewards'),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => context.pop(),
-        ),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+      body: SafeArea(
+        child: ListView(
+          padding: const EdgeInsets.all(16),
           children: [
-            Icon(
-              Icons.card_giftcard_rounded,
-              size: 80,
-              color: AppColors.brandGold,
+            // ── Title ──
+            Padding(
+              padding: const EdgeInsets.only(bottom: 16),
+              child: Text(
+                'Rewards',
+                style: TextStyle(
+                  fontSize: 26,
+                  fontWeight: FontWeight.bold,
+                  color: textColor,
+                ),
+              ),
             ),
-            const SizedBox(height: 24),
+
+            // ── Points card ──
+            LrPointsCard(isDark: isDark),
+            const SizedBox(height: 12),
+
+            // ── Action buttons ──
+            LrActionButtons(
+              isDark: isDark,
+              onRedeem: () => context.push('/redeem-points'),
+              onHistory: () => context.push('/points-history'),
+              onRefer: () {},
+            ),
+            const SizedBox(height: 12),
+
+            // ── Refer & Earn ──
+            LrReferCard(isDark: isDark),
+            const SizedBox(height: 20),
+
+            // ── Recent points label ──
             Text(
-              'Loyalty Rewards',
-              style: Theme.of(context).textTheme.displaySmall,
+              'RECENT POINTS',
+              style: TextStyle(
+                fontSize: 11,
+                fontWeight: FontWeight.w700,
+                color: AppColors.mutedBlue,
+                letterSpacing: 1.2,
+              ),
             ),
-            const SizedBox(height: 16),
-            Text(
-              'Screen implementation coming soon',
-              style: Theme.of(context).textTheme.bodyMedium,
-            ),
+            const SizedBox(height: 10),
+
+            // ── Recent points list ──
+            const LrRecentPoints(),
           ],
         ),
       ),
