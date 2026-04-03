@@ -41,7 +41,8 @@ class LoyaltyRewardsscreen extends StatelessWidget {
               isDark: isDark,
               onRedeem: () => context.push('/redeem-points'),
               onHistory: () => context.push('/points-history'),
-              onRefer: () {},
+              //  onRefer: () {},
+              onRefer: () => context.push('/refer'),
             ),
             const SizedBox(height: 12),
 

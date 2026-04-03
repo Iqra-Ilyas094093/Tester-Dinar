@@ -37,6 +37,8 @@ import 'package:dinar_app/core/widgets/main_navigation.dart';
 import 'package:dinar_app/features/booking/payment_cards/add_new_card_screen.dart';
 import 'package:dinar_app/features/booking/payment_cards/saved_card_screen.dart';
 
+import '../../features/rewards/refer_screen.dart';
+
 // ── Navigator Keys ────────────────────────────────────────────────────────────
 // rootNavigatorKey  → full-screen routes (NO bottom bar)
 // shellNavigatorKey → tab routes only (WITH bottom bar)
@@ -110,7 +112,7 @@ final GoRouter appRouter = GoRouter(
       ],
     ),
 
-    // ── Booking Flow (no bottom bar) ─────────────────────────────────────────
+    // ── Booking Flow (no bottom bar) ────────────────────────────────────
     GoRoute(
       parentNavigatorKey: _rootNavigatorKey,
       path: '/vehicle-selection',
@@ -173,6 +175,11 @@ final GoRouter appRouter = GoRouter(
       parentNavigatorKey: _rootNavigatorKey,
       path: '/redeem-points',
       builder: (context, state) => const RedeemPointsscreen(),
+    ),
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: '/refer',
+      builder: (context, state) => const ReferScreen(),
     ),
 
     // ── Profile sub-screens (no bottom bar) ──────────────────────────────────
