@@ -34,6 +34,8 @@ import 'package:dinar_app/features/driver/active_job_screen.dart';
 import 'package:dinar_app/features/driver/earnings_screen.dart';
 import 'package:dinar_app/features/driver/driver_profile_screen.dart';
 import 'package:dinar_app/core/widgets/main_navigation.dart';
+import 'package:dinar_app/features/booking/payment_cards/add_new_card_screen.dart';
+import 'package:dinar_app/features/booking/payment_cards/saved_card_screen.dart';
 
 // ── Navigator Keys ────────────────────────────────────────────────────────────
 // rootNavigatorKey  → full-screen routes (NO bottom bar)
@@ -238,6 +240,16 @@ final GoRouter appRouter = GoRouter(
       parentNavigatorKey: _rootNavigatorKey,
       path: '/driver-profile',
       builder: (context, state) => const DriverProfilescreen(),
+    ),
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: '/add-card',
+      builder: (context, state) => const AddNewCardScreen(),
+    ),
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: '/saved-cards',
+      builder: (context, state) => const SavedCardsScreen(),
     ),
   ],
 );
